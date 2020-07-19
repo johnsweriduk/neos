@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'neolist',
     'neo_frontend',
+    'planets',
     'rest_framework',
     'django_crontab'
 ]
