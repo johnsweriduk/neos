@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
-from neolist.models import Neo
 from skyfield.api import load
 from contextlib import closing
 
@@ -25,7 +24,15 @@ class Command(BaseCommand):
                 planet_ephemeris = planets[planet].at(t)
                 position = planet_ephemeris.position
 
-                pos_x = position[0]
-                pos_y = position[1]
-                pos_z = position[2]
-                print(planet + ' ' + str(position.au))
+                pos_x = position.au[0]
+                pos_y = position.au[1]
+                pos_z = position.au[2]
+                #print(planet + ' ' + str(position.au))
+                planet_data.append({
+                    "name": planet,
+                    "x": pos_x,
+                    "y": pos_y,
+                    "z": pos_z
+                    })
+
+            print(planet_data)

@@ -1,9 +1,15 @@
-import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import React, { Component } from 'react'
+import Space from './three/Space.js';
 
 class App extends Component {
     render = () => {
-        return <h1>React App</h1>;
+        return (
+            <div>
+                <h1>React App</h1>;
+                <Space />
+            </div>
+        );
     }
 }
 

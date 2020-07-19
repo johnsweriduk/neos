@@ -1,3 +1,6 @@
+#BSP FROM SKYFIELD API#
+*.bsp
+
 # Django #
 *.log
 *.pot
