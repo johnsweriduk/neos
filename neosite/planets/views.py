@@ -31,6 +31,7 @@ def get_orbits(request):
             pos_y = position.au[1]
             pos_z = position.au[2]
             position = {} 
+            position2 = {}
             rotation = {}
             axes = {}
 
@@ -48,11 +49,18 @@ def get_orbits(request):
                     "y": 0,
                     "z": 0,
                     "loa": elements.longitude_of_ascending_node.radians,
-                    "per": elements.argument_of_periapsis.radians - math.pi,
+                    "per": elements.argument_of_periapsis.radians,
                     "inc": elements.inclination.radians
                 }
                 distance = (elements.semi_major_axis.au - elements.periapsis_distance.au)
+                if(planet == 'MERCURY BARYCENTER'):
+                    distance = 0
                 position = {
+                    "x":   -distance,
+                    "y": 0,
+                    "z":  0
+                }
+                position2 = {
                     "x":  sun.position.au[0],
                     "y": sun.position.au[1],
                     "z":  sun.position.au[2]
@@ -65,6 +73,7 @@ def get_orbits(request):
                 "y": pos_y,
                 "z": pos_z,
                 "position": position,
+                "position2": position2,
                 "rotation": rotation,
                 "axes": axes
             })

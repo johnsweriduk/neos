@@ -57,6 +57,7 @@ class Space extends Component {
                         <Planet name={planet.name} scale={planet.scale} key={planet.name} position={[planet.x, planet.y, planet.z]} />
                         <PlanetOrbit
                             position={[planet.position.x, planet.position.y, planet.position.z]}
+                            position2={[planet.position2.x, planet.position2.y, planet.position2.z]}
                             loa={[0, 0, planet.rotation.loa]}
                             per={[0, 0, planet.rotation.per]}
                             inc={[planet.rotation.inc, 0, 0]}

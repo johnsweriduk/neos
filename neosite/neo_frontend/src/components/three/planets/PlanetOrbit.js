@@ -13,13 +13,13 @@ const PlanetOrbit = props => {
     }, [])
     console.log(props);
     return (
-        <group rotation={props.loa} position={props.position}>
+        <group rotation={props.loa} position={props.position2}>
             <group rotation={props.inc}>
                 <group rotation={props.per}>
-                <line geometry={geometry}>
-                        <lineBasicMaterial attach="material" color="green"/>
+                    <line geometry={geometry} position={props.position}>
+                        <lineBasicMaterial attach="material" color="green" />
                     </line>
-                    </group>
+                </group>
             </group>
         </group>
     )
