@@ -18,6 +18,7 @@ const CameraControls = () => {
     } = useThree();
     // Ref to the controls, so that we can update them on every frame using useFrame
     const controls = useRef();
+    camera.controls = controls;
     useFrame((state) => controls.current.update());
     return <orbitControls ref={controls} args={[camera, domElement]} />;
 };

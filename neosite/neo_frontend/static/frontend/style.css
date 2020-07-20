@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+}
+* {
+    box-sizing: border-box;
+}
+.name {
+    font-size: 25px;
+    font-family: 'Space Mono', monospace;
+    color: #fff;
+    padding-left: 15px;
+    margin-top: -43px;
+}
+.name .indicator {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -25px;
+    left: -25px;
+}
+.name .indicator > div {
+    width: 50%;
+    height: 50%;
+    float: left;
+}
+
+    .name .indicator .top-left {
+        border-top-left-radius: 100%;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+    }
+    .name .indicator .bottom-left {
+        border-bottom-left-radius: 100%;
+        border-bottom: 1px solid #fff;
+        border-left: 1px solid #fff;
+    }
+.name .indicator .bottom-right {
+    border-bottom-right-radius: 100%;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
