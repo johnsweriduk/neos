@@ -53,8 +53,7 @@ def get_orbits(request):
                     "inc": elements.inclination.radians
                 }
                 distance = (elements.semi_major_axis.au - elements.periapsis_distance.au)
-                if(planet == 'MERCURY BARYCENTER'):
-                    distance = 0
+                
                 position = {
                     "x":   -distance,
                     "y": 0,
