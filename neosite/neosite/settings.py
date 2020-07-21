@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'neolist',
+    'neo_frontend',
+    'planets',
     'rest_framework',
     'django_crontab'
 ]
@@ -81,15 +83,15 @@ DATABASES = {
 
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-            'NAME': 'neosite',
+            'NAME': 'ddprvmpeds8na',
 
-            'USER': 'postgres',
+            'USER': 'fklbzvhiwuzbxu',
 
-            'PASSWORD': '',
+            'PASSWORD': 'f614caf2b10a255c0f75d830f81c78336848d5303d02ae913b50c9c735bcc361', 
 
-            'HOST': 'localhost',
+            'HOST': 'ec2-35-173-94-156.compute-1.amazonaws.com',
 
-            'PORT': '',
+            'PORT': '5432',
 
         }
 }
@@ -141,3 +143,5 @@ NEO_LOOKUP_URL = 'https://api.nasa.gov/neo/rest/v1/neo/'
 
 #found that this number, 350,000, returns about 50 asteroids from the NEO_BROWSE_URL api
 MAX_CLOSE_APPROACH_DISTANCE = 350000
+
+django_heroku.settings(locals())

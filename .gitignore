@@ -1,3 +1,7 @@
+
+#BSP FROM SKYFIELD API#
+*.bsp
+.vs/*
 # Django #
 *.log
 *.pot
@@ -83,7 +87,8 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
-
+newenv
+env
 # mkdocs documentation 
 /site 
 
