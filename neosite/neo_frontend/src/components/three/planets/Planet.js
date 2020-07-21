@@ -16,17 +16,20 @@ const Planet = props => {
         camera
     } = useThree();
     camera.isAnimating = false;
-    const distance = props.scale / 2
+    let distance = props.scale / 2
+    if (props.name == 'sun') {
+        distance = distance / 3;
+    }
     useFrame(() => {
         mesh.current.rotation.y += 0.001;
         if (cameraAnimate) {
             const target = camera.controls.current.target;
-            const targetExp = Math.abs(target.x - newPosition[0]) > 0.025 && Math.abs(target.y - newPosition[1]) > 0.025 && Math.abs(target.z - newPosition[2]) > 0.025;
+            const targetExp = Math.abs(target.x - newPosition[0]) > 0.01 && Math.abs(target.y - newPosition[1]) > 0.01 && Math.abs(target.z - newPosition[2]) > 0.01;
             const locExp = Math.abs(camera.position.x - newPosition[0]) < distance && Math.abs(camera.position.y - newPosition[1]) < distance && Math.abs(camera.position.z - newPosition[2]) < distance;
             if (targetExp) {
-                const x = target.x - (target.x - newPosition[0]) / 75;
-                const y = target.y - (target.y - newPosition[1]) / 75;
-                const z = target.z - (target.z - newPosition[2]) / 75;
+                const x = target.x - (target.x - newPosition[0]) / 50;
+                const y = target.y - (target.y - newPosition[1]) / 50;
+                const z = target.z - (target.z - newPosition[2]) / 50;
                 target.set(x, y, z);
             }
             if (!locExp) {

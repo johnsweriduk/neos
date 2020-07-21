@@ -20,7 +20,7 @@ def get_orbits(request):
         planet_keys = ['SUN', 'MERCURY BARYCENTER', 'VENUS BARYCENTER', 'EARTH BARYCENTER', 'MARS BARYCENTER', 'JUPITER BARYCENTER', 'SATURN BARYCENTER', 'URANUS BARYCENTER', 'NEPTUNE BARYCENTER', 'PLUTO BARYCENTER']
         planet_arr = ['sun', 'mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
 
-        planet_scale = [15, 0.38, 0.95, 1, 0.53, 11.2, 9.45, 4, 3.88, 5]
+        planet_scale = [10, 0.38, 0.95, 1, 0.53, 11.2, 9.45, 4, 3.88, 5]
 
 
         for planet in planet_keys:

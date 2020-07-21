@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useStore } from 'react';
 import { useFrame } from 'react-three-fiber';
 
 
 function Box(props) {
     const mesh = useRef()
-
+    const store = useStore();
+    console.log(store);
     // Set up state for the hovered and active state
     const [hovered, setHover] = useState(false)
     const [active, setActive] = useState(false)

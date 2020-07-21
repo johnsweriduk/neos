@@ -25,21 +25,17 @@ class Command(BaseCommand):
 
             for asteroid in neo_list:
                 if(asteroid['is_potentially_hazardous_asteroid']):
-                    close_approach_data = asteroid['close_approach_data']
-                    closest_approach = 100000000 # very large number used for comparison
-                    for approach in close_approach_data:
-                        miss_distance = approach['miss_distance']['miles']
-                        if(float(miss_distance) < closest_approach):
-                            closest_approach = float(miss_distance)
-                    if(closest_approach < settings.MAX_CLOSE_APPROACH_DISTANCE):
-                        hazardous_asteroids.append(asteroid)
+                    if(not asteroid['orbital_data']['orbit_class'] is None):
+                        if(asteroid['orbital_data']['orbit_class']['orbit_class_type'] == 'APO'):
+                            if(asteroid['estimated_diameter']['kilometers']['estimated_diameter_min'] > 3):
+                                hazardous_asteroids.append(asteroid);
 
             response = requests.get(next_url)
             browse_data = response.json()
             next_url = browse_data['links']['next']
             self.stdout.write('next url: ' + next_url)
             self.stdout.write('hazardous asteroids: ' + str(len(hazardous_asteroids)))
-            if(len(hazardous_asteroids) >= 50):
+            if(len(hazardous_asteroids) >= 5):
                 next_url = 0
 
         for asteroid in hazardous_asteroids:

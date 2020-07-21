@@ -1,0 +1,1 @@
+web: gunicorn neosite.wsgi --log-file -

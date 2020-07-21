@@ -15,7 +15,7 @@ const Skybox = props => {
         <mesh
             {...props}
             ref={mesh}
-            scale={[75,75,75]}>
+            scale={[900,900,900]}>
             <sphereBufferGeometry attach="geometry" args={[1, 128, 128]} />
             <meshStandardMaterial attach="material" side={1} map={texture} />
         </mesh>

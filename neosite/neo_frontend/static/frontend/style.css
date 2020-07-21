@@ -10,6 +10,18 @@ body {
     color: #fff;
     padding-left: 15px;
     margin-top: -43px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.name .diameter {
+    font-size: 12px;
+    padding-left: 20px;
+    margin-top: -5px;
 }
 .name .indicator {
     width: 50px;
@@ -39,3 +51,50 @@ body {
     border-bottom: 1px solid #fff;
     border-right: 1px solid #fff;
 }
+
+.name.asteroid {
+    width: 400px;
+}
+
+.loading {
+    font-family: 'Space Mono', monospace;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    z-index: 99999999;
+    color: #fff;
+}
+.loading .info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 600px;
+}
+.loading button {
+    font-family: 'Space Mono', monospace;
+    background: transparent;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #fff;
+    transition: all 0.2s ease-in-out;
+    margin-top: 5px;
+}
+    .loading button:hover {
+        background: #fff;
+        color: #000;
+    }
+
+    .loading h1 {
+        margin-bottom: 0px;
+    }
+    .loading .tagline p {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 15px;
+    }
+    

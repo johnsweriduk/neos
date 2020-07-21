@@ -6,7 +6,7 @@ import {
 
 
 
-const Loading = props => {
+const PlanetLoading = props => {
     const mesh = useRef()
     const scaleFactor = 23481.86 / 250;
     // Set up state for the hovered and active state
@@ -28,4 +28,4 @@ const Loading = props => {
     );
 }
 
-export default Loading;
+export default PlanetLoading;
