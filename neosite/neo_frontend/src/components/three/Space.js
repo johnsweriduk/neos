@@ -29,18 +29,25 @@ class Space extends Component {
         })
     }
     componentDidMount = () => {
+        let planets
+        let neos
         axios.get('/api/planets')
             .then(res => {
-                console.log(res.data);
-                this.setState({
-                    planets: res.data
-                });
-            });
-        axios.get('/api/neo')
-            .then(res => {
-                this.setState({
-                    neos: res.data
-                });
+                for (let planet of res.data) {
+                    planet.moveTo = false;
+                }
+                planets = res.data
+                axios.get('/api/neo')
+                    .then(res => {
+                        neos = res.data
+                        for (let neo of res.data) {
+                            neo.moveTo = false;
+                        }
+                        this.setState({
+                            planets: planets,
+                            neos: neos
+                        });
+                    });
             });
     }
 
@@ -48,8 +55,13 @@ class Space extends Component {
         return (
             <div>
                 { this.state.loading && <Load hide={this.hide} /> }
-                <Navigation />
-                <Canvas camera={{ fov: 75, position: [4, 4, 4] }} colorManagement style={{ height: '100vh', width: '100vw' }}>
+                <Navigation
+                    voteForNeo={this.voteForNeo}
+                    moveCameraToNeo={this.moveCameraToNeo}
+                    moveCameraToPlanet={this.moveCameraToPlanet}
+                    planets={this.state.planets}
+                    neos={this.state.neos} />
+                <Canvas camera={{ fov: 75, position: [4, 4, 4] }} colorManagement style={{ height: '100vh', width: '80vw' }}>
                     <CameraControls />
                     <ambientLight />
                     <pointLight position={[10, 10, 10]} />
@@ -76,6 +88,7 @@ class Space extends Component {
                                 position={[planet.x, planet.y, planet.z]} />
                         }>
                         <Planet
+                            moveTo={planet.moveTo}
                             name={planet.name}
                             scale={planet.scale}
                             position={[planet.x, planet.y, planet.z]} />
@@ -92,6 +105,7 @@ class Space extends Component {
                                 position={[planet.x, planet.y, planet.z]} />
                         }>
                         <Planet
+                            moveTo={planet.moveTo}
                             name={planet.name}
                             scale={planet.scale}
                             position={[planet.x, planet.y, planet.z]} />
@@ -158,6 +172,7 @@ class Space extends Component {
                             position={[xh, yh, zh]} />
                     }>
                     <Neo
+                        moveTo={neo.moveTo}
                         name={name}
                         scale={scale}
                         position={[xh, yh, zh]} />
@@ -178,6 +193,33 @@ class Space extends Component {
                 </Suspense>
             )
         })
+    }
+
+    moveCameraToNeo = index => {
+        const newNeos = this.state.neos;
+        for (let neo of newNeos) {
+            neo.moveTo = false;
+        }
+        newNeos[index].moveTo = true;
+        this.setState({
+            neos: newNeos
+        });
+    }
+
+    moveCameraToPlanet = index => {
+        const newPlanets = this.state.planets;
+        for (let planet of newPlanets) {
+            planet.moveTo = false;
+        }
+        newPlanets[index].moveTo = true;
+        console.log(newPlanets);
+        this.setState({
+            planets: newPlanets
+        });
+    }
+
+    voteForNeo = index => {
+        // perform a post request that will just increment the value in python and save the object
     }
 }
 

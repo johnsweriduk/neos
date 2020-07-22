@@ -15,7 +15,6 @@ const PlanetOrbit = props => {
         const points = curve.getPoints(512)
         return new THREE.BufferGeometry().setFromPoints(points)
     }, [])
-    console.log(props);
     return (
         <group rotation={props.loa} position={props.position2}>
             <group rotation={props.inc}>

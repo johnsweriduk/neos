@@ -10,19 +10,25 @@ const Planet = props => {
     const scaleFactor = 23481.86 / 250;
     // Set up state for the hovered and active state
     let newPosition = [];
-    let cameraAnimate = false;
-    const texture = useLoader(TextureLoader, '/static/textures/' + props.name + '.jpg');
     const {
         camera
     } = useThree();
     camera.isAnimating = false;
+    if (props.moveTo && !camera.isAnimating) {
+        newPosition = props.position
+        camera.isAnimating = true;
+    }
+    let cameraNotMoved = true;
+    let cameraAnimate = false;
+
+    const texture = useLoader(TextureLoader, '/static/textures/' + props.name + '.jpg');
     let distance = props.scale / 2
     if (props.name == 'sun') {
         distance = distance / 3;
     }
     useFrame(() => {
         mesh.current.rotation.y += 0.001;
-        if (cameraAnimate) {
+        if (cameraAnimate || (props.moveTo && cameraNotMoved)) {
             const target = camera.controls.current.target;
             const targetExp = Math.abs(target.x - newPosition[0]) > 0.01 && Math.abs(target.y - newPosition[1]) > 0.01 && Math.abs(target.z - newPosition[2]) > 0.01;
             const locExp = Math.abs(camera.position.x - newPosition[0]) < distance && Math.abs(camera.position.y - newPosition[1]) < distance && Math.abs(camera.position.z - newPosition[2]) < distance;
@@ -43,6 +49,7 @@ const Planet = props => {
                 camera.isAnimating = false;
                 cameraAnimate = false;
                 newPosition = [];
+                cameraNotMoved = false;
             }
         }
     });
@@ -52,10 +59,8 @@ const Planet = props => {
             ref={mesh}
             onClick={() => {
                 if (!camera.isAnimating) {
-                    console.log(props.position[2]);
                     newPosition = props.position;
                     camera.isAnimating = true;
-                    console.log(camera.controls);
                     cameraAnimate = true;
                 }
             }}
