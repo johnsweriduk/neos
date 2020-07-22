@@ -21,6 +21,7 @@ class Neo(models.Model):
     orbital_period = models.DecimalField(max_digits = 32, decimal_places = 16, null=True, blank=True)
     mean_motion = models.DecimalField(max_digits = 32, decimal_places = 16, null=True, blank=True)
     aphelion_distance = models.DecimalField(max_digits = 32, decimal_places = 16, null=True, blank=True)
+    votes = models.IntegerField()
 
     def __str__(self): 
         return self.title

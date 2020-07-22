@@ -103,7 +103,7 @@ button:hover {
 }
 .navigation > div {
     padding: 25px;
-    padding-left: 0px;
+    padding-left: 10px;
 }
 
 main .navigation + div {
@@ -138,10 +138,10 @@ main .navigation + div {
     border: 1px solid #fff;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 10px;
     padding: 25px;
     background: black;
-    width: 20vw;
+    width: calc(20vw - 10px);
 }
 .planet-navigation .title {
     top: 50%;

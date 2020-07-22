@@ -33,14 +33,14 @@ class Navigation extends Component {
         return this.props.neos.map((neo, index) => {
             return (<div key={index} className="neo nav-item">
                 <div className="label">
-                    <p>{neo.name}</p>
+                    <p>{neo.name} Votes: {neo.votes}</p>
                     <button
                         onClick={() => { this.props.moveCameraToNeo(index) }}>
                         GO
                     </button>
                     {!this.state.hasVoted && (<button
                         onClick={() => {
-                            this.props.voteForNeo(index)
+                            this.props.voteForNeo(neo.asteroid_id)
                             console.log('test');
                             this.setState({
                                 hasVoted: true

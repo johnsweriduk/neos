@@ -220,6 +220,7 @@ class Space extends Component {
 
     voteForNeo = index => {
         // perform a post request that will just increment the value in python and save the object
+        axios.get('/api/neo/vote/' + index)
     }
 }
 
