@@ -103,6 +103,7 @@ button:hover {
 }
 .navigation > div {
     padding: 25px;
+    padding-left: 0px;
 }
 
 main .navigation + div {
@@ -121,8 +122,6 @@ main .navigation + div {
 .planet-navigation,
 .neo-navigation {
     height: 50%;
-    overflow-y: scroll;
-    overflow-x: hidden;
     position: relative;
     padding-top: 90px !important;
 }
@@ -132,9 +131,9 @@ main .navigation + div {
     margin-bottom: 15px;
     transition: all 0.2s ease-in-out;
 }
-    .navigation .label:hover {
-        background: #010b13;
-    }
+.navigation .label:hover {
+    background: #010b13;
+}
 .navigation .title {
     border: 1px solid #fff;
     position: fixed;
@@ -142,7 +141,7 @@ main .navigation + div {
     left: 0;
     padding: 25px;
     background: black;
-    width: calc(20vw - 17px);
+    width: 20vw;
 }
 .planet-navigation .title {
     top: 50%;
@@ -150,4 +149,18 @@ main .navigation + div {
 
 .navigation p {
     margin-top: 0px;
+}
+
+.simplebar-scrollbar:before {
+    background: white !important;
+    opacity: 0.6 !important;
+}
+.simplebar-track {
+    right: -18px !important;
+}
+    .simplebar-track.simplebar-vertical {
+        visibility: visible !important;
+    }
+.simplebar-scrollbar.simplebar-visible:before {
+    opacity: 1 !important;
 }

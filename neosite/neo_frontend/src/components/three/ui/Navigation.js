@@ -1,5 +1,6 @@
 import React, { Component, Suspense } from 'react';
-
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 class Navigation extends Component {
     state = {
@@ -12,13 +13,17 @@ class Navigation extends Component {
                     <div className="title">
                         Near-Earth Objects
                     </div>
-                    { this.drawNeoNav() }
+                    <SimpleBar style={{ maxHeight: '100%' }}>
+                        {this.drawNeoNav()}
+                    </SimpleBar>
                 </div>
                 <div className="planet-navigation">
                     <div className="title">
                         Planets
                     </div>
-                    { this.drawPlanetNav() }
+                    <SimpleBar style={{ maxHeight: '100%' }}>
+                        {this.drawPlanetNav()}
+                    </SimpleBar>
                 </div>
             </div>
         );
